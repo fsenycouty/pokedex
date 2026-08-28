@@ -6,18 +6,24 @@
 - Factorisation : messages d'erreur centralisés
 - Revue d'architecture et de qualité de code sur l'ensemble du projet avec Claude Code, avant mise en ligne effective du repo GitHub
 - Corriger les incohérences trouvées et rajouter des tests
+- Mettre en place l'outillage qualité (ESLint/Prettier), le CI (GitHub Actions), et Docker pour faciliter l'installation
 
 ### Travail réalisé
 - Nettoyage : tokens JWT réels retirés des fichiers `.http` (`rest-client/`), remplacés par du chaînage de requêtes REST Client (`# @name login` + `{{login.response.body.token}}`)
 - `package.json` : `description`/`author`/`keywords` renseignés, `nodemon` déplacé en `devDependencies`, `engines` ajouté (`node >=20`, contrainte réelle de `joi`/`swagger-jsdoc`)
 - Messages d'erreur dupliqués (5 occurrences de "L'équipe n'existe pas !" entre `TeamController` et `TeamPokemonController`, etc.) centralisés dans `utils/messages.js`
 - Couverture de tests renforcée (générés par Claude Code) : passage de 6 à 37 tests — CRUD `Team` complet (ownership, unicité), `TeamPokemonController` complet (limite de 6, unicité, ownership), cas limites de `validateToken` (header absent/mal formé, token invalide, expiré, utilisateur supprimé après émission du token), tests unitaires pour `password.service` et `team.owner.service`
+- ESLint + Prettier mis en place (`eslint.config.js`, `.prettierrc.json`, scripts `lint`/`format`) : 7 erreurs ESLint corrigées, 33 fichiers reformatés automatiquement (sans impact sur les tests) - fait avec Claude Code.
+- CI mis en place (GitHub Actions, `.github/workflows/tests.yml`) : service Postgres éphémère, `npm ci`, `lint` puis `test` — fait via une vraie PR (branche → push → PR → check CI → merge) plutôt qu'un merge local direct, pour que les checks soient visibles ; `JWT_SECRET` géré en secret GitHub Actions, identifiants Postgres du CI rendus génériques (jamais les mêmes qu'en local) - fait avec Claude Code.
+- API et BDD dockerisées : `api/Dockerfile`, `api/.dockerignore`, `docker-compose.yml` à la racine — script `start` manquant ajouté à `package.json`.
+- README : section "Avec Docker (recommandé)" ajoutée en parallèle de l'installation native, tableau des scripts complété (`lint`, `format`)
 
 ### Difficultés rencontrées / corrigées
 - En ajoutant les nouveaux fichiers de test d'intégration, la suite est devenue instable (`SequelizeUniqueConstraintError`, `relation "user" does not exist`) : plusieurs fichiers de test exécutaient chacun leur propre `sequelize.sync({force:true})` **en parallèle** sur la même BDD `pokedex_test`, et se marchaient dessus. Invisible avant car un seul fichier touchait la BDD jusqu'ici. Corrigé en forçant l'exécution séquentielle des fichiers (`--test-concurrency=1` dans le script `test`)
+- ESLint : faux positif `no-unused-vars` sur `next` dans le middleware de gestion d'erreur — Express exige exactement 4 paramètres pour reconnaître un middleware de gestion d'erreur, même si `next` n'est jamais appelé dedans. Corrigé en le préfixant `_next` (+ `argsIgnorePattern: "^_"` dans la config) plutôt qu'en le supprimant, ce qui aurait cassé la gestion d'erreur silencieusement
+- Docker : `argon2` (module natif) refuse de s'installer sur `node:20-alpine` (pas de binaire précompilé pour musl) ; passage à `node:20-slim` insuffisant seul (`node-gyp` réclame Python). Corrigé en ajoutant `python3 make g++` dans le `Dockerfile`
 
 ### À poursuivre
-- Mettre en place le CI (GitHub Actions, service container Postgres) — en cours
 - Fonctionnalités (recherche, favoris, score d'équipe)
 
 ---
