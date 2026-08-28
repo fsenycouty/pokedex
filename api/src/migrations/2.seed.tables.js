@@ -14,14 +14,13 @@ async function seed() {
   console.log("Seeding Pokemon...");
   // On utilise la méthode "bulkCreate" de notre modèle qui permet d'insérer plusieurs lignes en BDD en simultané.
   // dataJson.pokemons --> la clé pokemons définie dans le JSON
-  // insertedPokemons --> un tableau d'instances de modèles List
-  const insertedPokemons = await Pokemon.bulkCreate(dataJson.pokemons, {
+  await Pokemon.bulkCreate(dataJson.pokemons, {
     returning: true,
   });
 
   // Type
   console.log("Seeding Type...");
-  const insertedTypes = await Type.bulkCreate(dataJson.types, {
+  await Type.bulkCreate(dataJson.types, {
     returning: true,
   });
 
@@ -37,7 +36,7 @@ async function seed() {
 
   // Team
   console.log("Seeding Team...");
-  const insertedTeams = await Team.bulkCreate(dataJson.teams, {
+  await Team.bulkCreate(dataJson.teams, {
     returning: true,
   });
 

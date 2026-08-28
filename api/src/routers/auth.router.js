@@ -47,7 +47,11 @@ const router = Router();
  *                 summary: Email déjà utilisé
  *                 value: { message: "L'email existe déjà" }
  */
-router.post("/auth/register", validate(registerSchema), controller.registerUser);
+router.post(
+  "/auth/register",
+  validate(registerSchema),
+  controller.registerUser,
+);
 
 /**
  * @openapi

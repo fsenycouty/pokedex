@@ -35,7 +35,10 @@ describe("Team", () => {
 
       const response = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
       const body = await response.json();
@@ -59,7 +62,10 @@ describe("Team", () => {
 
       const response = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({}),
       });
 
@@ -71,13 +77,19 @@ describe("Team", () => {
 
       await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
 
       const response = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
       const body = await response.json();
@@ -92,13 +104,19 @@ describe("Team", () => {
       const { token } = await registerAndLogin();
       const created = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       }).then((r) => r.json());
 
       const response = await fetch(`${getBaseUrl()}/teams/${created.id}`, {
         method: "PATCH",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "OmegaSquad" }),
       });
       const body = await response.json();
@@ -108,18 +126,30 @@ describe("Team", () => {
     });
 
     it("renvoie 403 si l'équipe appartient à un autre utilisateur", async () => {
-      const owner = await registerAndLogin({ username: "Owner", email: "owner@mail.io" });
+      const owner = await registerAndLogin({
+        username: "Owner",
+        email: "owner@mail.io",
+      });
       const team = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${owner.token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${owner.token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       }).then((r) => r.json());
 
-      const intruder = await registerAndLogin({ username: "Intruder", email: "intruder@mail.io" });
+      const intruder = await registerAndLogin({
+        username: "Intruder",
+        email: "intruder@mail.io",
+      });
 
       const response = await fetch(`${getBaseUrl()}/teams/${team.id}`, {
         method: "PATCH",
-        headers: { "content-type": "application/json", authorization: `Bearer ${intruder.token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${intruder.token}`,
+        },
         body: JSON.stringify({ name: "OmegaSquad" }),
       });
 
@@ -130,18 +160,27 @@ describe("Team", () => {
       const { token } = await registerAndLogin();
       await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
       const team2 = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "BetaSquad" }),
       }).then((r) => r.json());
 
       const response = await fetch(`${getBaseUrl()}/teams/${team2.id}`, {
         method: "PATCH",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
       const body = await response.json();
@@ -154,13 +193,19 @@ describe("Team", () => {
       const { token } = await registerAndLogin();
       const team = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       }).then((r) => r.json());
 
       const response = await fetch(`${getBaseUrl()}/teams/${team.id}`, {
         method: "PATCH",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
 
@@ -173,7 +218,10 @@ describe("Team", () => {
       const { token } = await registerAndLogin();
       const team = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       }).then((r) => r.json());
 
@@ -188,14 +236,23 @@ describe("Team", () => {
     });
 
     it("renvoie 403 si l'équipe appartient à un autre utilisateur", async () => {
-      const owner = await registerAndLogin({ username: "Owner", email: "owner@mail.io" });
+      const owner = await registerAndLogin({
+        username: "Owner",
+        email: "owner@mail.io",
+      });
       const team = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${owner.token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${owner.token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       }).then((r) => r.json());
 
-      const intruder = await registerAndLogin({ username: "Intruder", email: "intruder@mail.io" });
+      const intruder = await registerAndLogin({
+        username: "Intruder",
+        email: "intruder@mail.io",
+      });
 
       const response = await fetch(`${getBaseUrl()}/teams/${team.id}`, {
         method: "DELETE",
@@ -210,7 +267,10 @@ describe("Team", () => {
     it("renvoie 401 avec un header Authorization mal formé (sans 'Bearer ')", async () => {
       const response = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: "not-a-bearer-token" },
+        headers: {
+          "content-type": "application/json",
+          authorization: "not-a-bearer-token",
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
 
@@ -220,7 +280,10 @@ describe("Team", () => {
     it("renvoie 401 avec un token invalide (mal signé)", async () => {
       const response = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: "Bearer valeur.invalide.ici" },
+        headers: {
+          "content-type": "application/json",
+          authorization: "Bearer valeur.invalide.ici",
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
 
@@ -229,11 +292,18 @@ describe("Team", () => {
 
     it("renvoie 401 avec un token expiré", async () => {
       const { userId } = await registerAndLogin();
-      const expiredToken = jwt.sign({ user_id: userId }, process.env.JWT_SECRET, { expiresIn: -10 });
+      const expiredToken = jwt.sign(
+        { user_id: userId },
+        process.env.JWT_SECRET,
+        { expiresIn: -10 },
+      );
 
       const response = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${expiredToken}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${expiredToken}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
 
@@ -246,7 +316,10 @@ describe("Team", () => {
 
       const response = await fetch(`${getBaseUrl()}/teams`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name: "AlphaSquad" }),
       });
       const body = await response.json();

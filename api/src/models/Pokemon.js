@@ -7,7 +7,7 @@ const Pokemon = sequelize.define(
     name: {
       type: DataTypes.STRING(255),
       allowNull: false,
-      unique: true
+      unique: true,
     },
 
     hp: {

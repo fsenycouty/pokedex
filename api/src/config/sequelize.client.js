@@ -25,10 +25,12 @@ try {
   await sequelize.authenticate();
   // Log de confirmation utile en dev (inutile pendant les tests)
   if (!isTest) {
-    console.log('✅ Connection to the database has been established successfully.');
+    console.log(
+      "✅ Connection to the database has been established successfully.",
+    );
   }
 } catch (error) {
-  console.error('❌ Unable to connect to the database:', error);
+  console.error("❌ Unable to connect to the database:", error);
 }
 
 export default sequelize;

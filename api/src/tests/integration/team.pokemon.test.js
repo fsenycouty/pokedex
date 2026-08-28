@@ -30,7 +30,10 @@ async function createPokemons(count) {
 async function createTeam(token, name = "AlphaSquad") {
   return fetch(`${getBaseUrl()}/teams`, {
     method: "POST",
-    headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({ name }),
   }).then((response) => response.json());
 }
@@ -41,13 +44,19 @@ describe("TeamPokemon", () => {
       const { token } = await registerAndLogin();
       const team = await createTeam(token);
       const pokemons = await createPokemons(1);
-      const pokemon = pokemons[0];;
+      const pokemon = pokemons[0];
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
-        body: JSON.stringify({ id: pokemon.id }),
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ id: pokemon.id }),
+        },
+      );
       const body = await response.json();
 
       assert.strictEqual(response.status, 200);
@@ -59,11 +68,17 @@ describe("TeamPokemon", () => {
       const { token } = await registerAndLogin();
       const team = await createTeam(token);
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
-        body: JSON.stringify({}),
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({}),
+        },
+      );
 
       assert.strictEqual(response.status, 400);
     });
@@ -72,11 +87,17 @@ describe("TeamPokemon", () => {
       const { token } = await registerAndLogin();
       const team = await createTeam(token);
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
-        body: JSON.stringify({ id: "not-a-number" }),
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ id: "not-a-number" }),
+        },
+      );
 
       assert.strictEqual(response.status, 400);
     });
@@ -85,27 +106,45 @@ describe("TeamPokemon", () => {
       const { token } = await registerAndLogin();
       const team = await createTeam(token);
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
-        body: JSON.stringify({ id: 999 }),
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ id: 999 }),
+        },
+      );
 
       assert.strictEqual(response.status, 404);
     });
 
     it("renvoie 403 si l'équipe appartient à un autre utilisateur", async () => {
-      const owner = await registerAndLogin({ username: "Owner", email: "owner@mail.io" });
+      const owner = await registerAndLogin({
+        username: "Owner",
+        email: "owner@mail.io",
+      });
       const team = await createTeam(owner.token);
       const pokemons = await createPokemons(1);
       const pokemon = pokemons[0];
-      const intruder = await registerAndLogin({ username: "Intruder", email: "intruder@mail.io" });
-
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${intruder.token}` },
-        body: JSON.stringify({ id: pokemon.id }),
+      const intruder = await registerAndLogin({
+        username: "Intruder",
+        email: "intruder@mail.io",
       });
+
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${intruder.token}`,
+          },
+          body: JSON.stringify({ id: pokemon.id }),
+        },
+      );
 
       assert.strictEqual(response.status, 403);
     });
@@ -118,19 +157,31 @@ describe("TeamPokemon", () => {
 
       await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ id: pokemon.id }),
       });
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
-        body: JSON.stringify({ id: pokemon.id }),
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ id: pokemon.id }),
+        },
+      );
       const body = await response.json();
 
       assert.strictEqual(response.status, 409);
-      assert.strictEqual(body.message, "Ce pokémon est déjà dans cette équipe.");
+      assert.strictEqual(
+        body.message,
+        "Ce pokémon est déjà dans cette équipe.",
+      );
     });
 
     it("renvoie 409 si l'équipe a déjà 6 pokémons", async () => {
@@ -141,20 +192,32 @@ describe("TeamPokemon", () => {
       for (const pokemon of pokemons.slice(0, 6)) {
         await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
           method: "POST",
-          headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify({ id: pokemon.id }),
         });
       }
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
-        body: JSON.stringify({ id: pokemons[6].id }),
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ id: pokemons[6].id }),
+        },
+      );
       const body = await response.json();
 
       assert.strictEqual(response.status, 409);
-      assert.strictEqual(body.message, "L'équipe est déjà complète (6 Pokémons maximum).");
+      assert.strictEqual(
+        body.message,
+        "L'équipe est déjà complète (6 Pokémons maximum).",
+      );
     });
   });
 
@@ -166,14 +229,20 @@ describe("TeamPokemon", () => {
       const pokemon = pokemons[0];
       await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ id: pokemon.id }),
       });
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons/${pokemon.id}`, {
-        method: "DELETE",
-        headers: { authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons/${pokemon.id}`,
+        {
+          method: "DELETE",
+          headers: { authorization: `Bearer ${token}` },
+        },
+      );
       const body = await response.json();
 
       assert.strictEqual(response.status, 200);
@@ -186,30 +255,45 @@ describe("TeamPokemon", () => {
       const pokemons = await createPokemons(1);
       const pokemon = pokemons[0];
 
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons/${pokemon.id}`, {
-        method: "DELETE",
-        headers: { authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons/${pokemon.id}`,
+        {
+          method: "DELETE",
+          headers: { authorization: `Bearer ${token}` },
+        },
+      );
 
       assert.strictEqual(response.status, 404);
     });
 
     it("renvoie 403 si l'équipe appartient à un autre utilisateur", async () => {
-      const owner = await registerAndLogin({ username: "Owner", email: "owner@mail.io" });
+      const owner = await registerAndLogin({
+        username: "Owner",
+        email: "owner@mail.io",
+      });
       const team = await createTeam(owner.token);
       const pokemons = await createPokemons(1);
       const pokemon = pokemons[0];
       await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons`, {
         method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${owner.token}` },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${owner.token}`,
+        },
         body: JSON.stringify({ id: pokemon.id }),
       });
-      const intruder = await registerAndLogin({ username: "Intruder", email: "intruder@mail.io" });
-
-      const response = await fetch(`${getBaseUrl()}/teams/${team.id}/pokemons/${pokemon.id}`, {
-        method: "DELETE",
-        headers: { authorization: `Bearer ${intruder.token}` },
+      const intruder = await registerAndLogin({
+        username: "Intruder",
+        email: "intruder@mail.io",
       });
+
+      const response = await fetch(
+        `${getBaseUrl()}/teams/${team.id}/pokemons/${pokemon.id}`,
+        {
+          method: "DELETE",
+          headers: { authorization: `Bearer ${intruder.token}` },
+        },
+      );
 
       assert.strictEqual(response.status, 403);
     });

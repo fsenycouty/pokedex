@@ -1,5 +1,5 @@
 import { Pokemon } from "../models/index.js";
-import HttpError from '../utils/HttpError.js';
+import HttpError from "../utils/HttpError.js";
 import { MESSAGES } from "../utils/messages.js";
 
 class PokemonController {
