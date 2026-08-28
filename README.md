@@ -15,8 +15,8 @@ jeu) via une API REST sécurisée.
   - [Fonctionnalités](#fonctionnalités)
   - [Stack technique](#stack-technique)
   - [Installation](#installation)
-    - [Prérequis](#prérequis)
-    - [Étapes](#étapes)
+    - [Avec Docker (recommandé)](#avec-docker-recommandé)
+    - [Installation native](#installation-native)
   - [Variables d'environnement](#variables-denvironnement)
   - [Scripts disponibles](#scripts-disponibles)
   - [Structure du projet](#structure-du-projet)
@@ -52,12 +52,32 @@ jeu) via une API REST sécurisée.
 
 ## Installation
 
-### Prérequis
+### Avec Docker (recommandé)
+
+Prérequis : [Docker](https://docs.docker.com/get-docker/) (Docker Compose est inclus avec Docker Desktop).
+
+```bash
+git clone https://github.com/fsenycouty/pokedex.git
+cd pokedex
+docker compose up -d
+```
+
+Au premier lancement, crée les tables et peuple la base avec le jeu de données de départ (151 Pokémon, 17 types, comptes de démonstration) :
+
+```bash
+docker compose exec api npm run db:reset
+```
+
+L'API est accessible sur `http://localhost:3050`, la documentation Swagger sur `http://localhost:3050/api/docs`. Aucune installation de Node.js ou PostgreSQL n'est nécessaire sur la machine hôte.
+
+### Installation native
+
+#### Prérequis
 
 - Node.js 20+
 - PostgreSQL
 
-### Étapes
+#### Étapes
 
 ```bash
 git clone https://github.com/fsenycouty/pokedex.git
@@ -114,6 +134,8 @@ Voir `.env.example` et `.env.test.example` pour le détail des clés attendues.
 | `npm run dev` | Démarre le serveur en mode développement (rechargement automatique) |
 | `npm start` | Démarre le serveur en mode production |
 | `npm test` | Exécute la suite de tests automatisés (unitaires + intégration) |
+| `npm run lint` | Analyse le code avec ESLint |
+| `npm run format` | Reformate le code avec Prettier |
 
 ## Structure du projet
 
