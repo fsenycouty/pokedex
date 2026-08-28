@@ -1,0 +1,32 @@
+### Requêtes à envoyer avec l'extension Rest Client
+
+
+### ===========================
+# Team_Pokemon
+### ===========================
+
+### POST /auth/login - récupère le token utilisé par les requêtes protégées ci-dessous
+# @name login
+POST http://localhost:3050/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "alice@mail.io",
+  "password": "Azertyuiop1234"
+}
+
+@authToken = {{login.response.body.token}}
+
+### POST /teams/:id/pokemons - un nouveau pokemon à une équipe
+POST http://localhost:3050/teams/5/pokemons HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "id": 8
+}
+
+### DELETE /teams/:idTeam/pokemons/:idPokemon - supprime un pokemon d'équipe
+DELETE http://localhost:3050/teams/5/pokemons/8 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{authToken}}
