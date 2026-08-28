@@ -41,7 +41,7 @@ jobs:
       - name: Créer .env.test
         run: |
           echo "DATABASE_URL=postgresql://admin_pokedex:pokedex@localhost:5432/pokedex_test" > .env.test
-          echo "JWT_SECRET=ci_test_secret" >> .env.test
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env.test
 
       - run: npm run lint
 
