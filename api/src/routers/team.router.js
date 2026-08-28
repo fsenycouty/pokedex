@@ -113,7 +113,12 @@ router.post("/teams", validateToken, validate(teamSchema), controller.create);
  *       409:
  *         description: L'équipe existe déjà !
  */
-router.patch("/teams/:id", validateToken, validate(teamSchema), controller.updateById);
+router.patch(
+  "/teams/:id",
+  validateToken,
+  validate(teamSchema),
+  controller.updateById,
+);
 
 /**
  * @openapi

@@ -2,7 +2,10 @@
 // Fonctions pures autour d'argon2 : pas de BDD, pas de serveur.
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { hashPassword, verifyPassword } from "../../services/password.service.js";
+import {
+  hashPassword,
+  verifyPassword,
+} from "../../services/password.service.js";
 
 describe("password.service", () => {
   it("hashPassword ne renvoie pas le mot de passe en clair", async () => {

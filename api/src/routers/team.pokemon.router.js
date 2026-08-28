@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import controller from '../controllers/TeamPokemonController.js';
+import { Router } from "express";
+import controller from "../controllers/TeamPokemonController.js";
 import { validateToken } from "../middlewares/auth.middleware.js";
 import { validate } from "../middlewares/validation.middleware.js";
 import { teamPokemonSchema } from "../schemas/team.pokemon.schema.js";
@@ -47,7 +47,12 @@ const router = Router();
  *       409:
  *         description: Équipe déjà complète (6 Pokémons maximum) ou Pokémon déjà présent dans l'équipe
  */
-router.post("/teams/:idTeam/pokemons", validateToken, validate(teamPokemonSchema), controller.addPokemon);
+router.post(
+  "/teams/:idTeam/pokemons",
+  validateToken,
+  validate(teamPokemonSchema),
+  controller.addPokemon,
+);
 
 /**
  * @openapi
@@ -80,6 +85,10 @@ router.post("/teams/:idTeam/pokemons", validateToken, validate(teamPokemonSchema
  *       404:
  *         description: L'équipe n'existe pas, ou le Pokémon n'existe pas dans cette équipe
  */
-router.delete("/teams/:idTeam/pokemons/:idPokemon", validateToken, controller.deletePokemon);
+router.delete(
+  "/teams/:idTeam/pokemons/:idPokemon",
+  validateToken,
+  controller.deletePokemon,
+);
 
 export default router;

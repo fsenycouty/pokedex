@@ -6,7 +6,6 @@ import assert from "node:assert";
 import { getBaseUrl } from "../setup/server.setup.js";
 
 describe("Auth", () => {
-
   describe("POST /auth/register", () => {
     it("ne renvoie pas le mot de passe dans la réponse", async () => {
       // 1. Arrange : données d'inscription valides

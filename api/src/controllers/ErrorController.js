@@ -1,7 +1,9 @@
 import HttpError from "../utils/HttpError.js";
 
 class ErrorController {
-  errorHandler = async (err, req, res, next) => {
+  // "next" est inutilisé mais obligatoire : Express reconnaît un middleware
+  // de gestion d'erreur uniquement s'il déclare exactement 4 paramètres
+  errorHandler = async (err, req, res, _next) => {
     // instanceof : est-ce que err est une instance de HttpError ?
     // retourne un bool vrai si err est une instance de HttpError
     if (err instanceof HttpError) {
@@ -17,7 +19,10 @@ class ErrorController {
     // si err.parent existe: récupérer le message du parent --> err.parent?.message
     // dans le cas d'une erreur SQL err.parent.message contient l'erreur SQL
     // si err.parent n'existe pas, alors récupérer le message de err --> ?? err.message
-    console.error(`Erreur sur ${req.method} ${req.originalUrl} :`, err.parent?.message ?? err.message);
+    console.error(
+      `Erreur sur ${req.method} ${req.originalUrl} :`,
+      err.parent?.message ?? err.message,
+    );
 
     // MESSAGE générique au client
     res.status(500).json({
@@ -27,7 +32,7 @@ class ErrorController {
     });
   };
 
-  route404 = async (req, res, next) => {
+  route404 = async () => {
     // Traite le cas de la 404
     throw new HttpError("Url non trouvée", 404);
   };

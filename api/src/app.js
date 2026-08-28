@@ -6,13 +6,13 @@ import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./config/swagger.js";
 
 // Configuration de app
-import 'dotenv/config';
-import express from 'express';
-import authRouter from './routers/auth.router.js';
-import teamRouter from './routers/team.router.js';
-import teamPokemonRouter from './routers/team.pokemon.router.js';
-import pokemonRouter from './routers/pokemon.router.js';
-import errorController from './controllers/ErrorController.js';
+import "dotenv/config";
+import express from "express";
+import authRouter from "./routers/auth.router.js";
+import teamRouter from "./routers/team.router.js";
+import teamPokemonRouter from "./routers/team.pokemon.router.js";
+import pokemonRouter from "./routers/pokemon.router.js";
+import errorController from "./controllers/ErrorController.js";
 
 // Express app
 const app = express();

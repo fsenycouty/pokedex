@@ -22,7 +22,14 @@ describe("checkTeamPokemon", () => {
     // Cas limite exact (6 Pokémons) : c'est ce cas précis qui avait révélé
     // le bug off-by-one d'origine (`length > 6` au lieu de `< 6`)
     const team = {
-      pokemons: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }],
+      pokemons: [
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
+      ],
     };
 
     const result = checkTeamPokemon(team, 7);

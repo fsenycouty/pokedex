@@ -1,5 +1,5 @@
 // Service pour le password
-import argon2 from 'argon2';
+import argon2 from "argon2";
 
 // Hache le mot de passe en clair avec argon2
 async function hashPassword(password) {

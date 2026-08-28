@@ -1,8 +1,8 @@
 // Service de vérification Limite et Unicité de pokemon
-export function checkTeamPokemon (team, idPokemon) {
+export function checkTeamPokemon(team, idPokemon) {
   // Recherche si le pokemon existe dans la Team
   const findPokemon = team.pokemons.find(
-    (pokemon) => pokemon.id === Number(idPokemon)
+    (pokemon) => pokemon.id === Number(idPokemon),
   );
 
   if (!findPokemon) {

@@ -73,7 +73,7 @@ class TeamPokemonController {
     }
     // Recherche si le pokemon existe dans la Team
     const findPokemon = team.pokemons.find(
-      (pokemon) => pokemon.id === Number(idPokemon)
+      (pokemon) => pokemon.id === Number(idPokemon),
     );
 
     if (!findPokemon) {

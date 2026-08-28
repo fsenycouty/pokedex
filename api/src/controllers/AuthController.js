@@ -36,27 +36,28 @@ class AuthController {
   };
 
   login = async (req, res) => {
-      const { email, password } = req.body;
+    const { email, password } = req.body;
 
-      // 1. Cherche le user dans la BDD à partir de son email et verifie si le password est valide
-      const foundUser = await User.findOne({ where: { email } });
+    // 1. Cherche le user dans la BDD à partir de son email et verifie si le password est valide
+    const foundUser = await User.findOne({ where: { email } });
 
-      if (!foundUser || !(await verifyPassword(foundUser.password_hash, password))) {
-        throw new HttpError("Email ou mot de passe incorrect", 401);
-      }
+    if (
+      !foundUser ||
+      !(await verifyPassword(foundUser.password_hash, password))
+    ) {
+      throw new HttpError("Email ou mot de passe incorrect", 401);
+    }
 
-      // 2. Calcule du token JWT
-      const token = jwt.sign(
-        { user_id: foundUser.id },
-        process.env.JWT_SECRET,
-        { expiresIn: "1h" },
-      );
+    // 2. Calcule du token JWT
+    const token = jwt.sign({ user_id: foundUser.id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
-      res.status(200).json({
-        token,
-        id: foundUser.id,
-        username: foundUser.username
-      });
+    res.status(200).json({
+      token,
+      id: foundUser.id,
+      username: foundUser.username,
+    });
   };
 
   logout = async (req, res) => {

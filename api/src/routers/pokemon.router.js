@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import controller from '../controllers/PokemonController.js';
+import { Router } from "express";
+import controller from "../controllers/PokemonController.js";
 
 const router = Router();
 

@@ -7,13 +7,22 @@
     "dev": "nodemon src/server.js",
     "db:create": "node src/migrations/1.create.tables.js",
     "db:seed": "node src/migrations/2.seed.tables.js",
-    "db:reset": "node src/migrations/1.create.tables.js && node src/migrations/2.seed.tables.js"
+    "db:reset": "node src/migrations/1.create.tables.js && node src/migrations/2.seed.tables.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "type": "module",
   "engines": {
     "node": ">=20"
   },
-  "keywords": ["pokedex", "api-rest", "express", "sequelize"],
+  "keywords": [
+    "pokedex",
+    "api-rest",
+    "express",
+    "sequelize"
+  ],
   "author": "Fabrice Seny-Couty",
   "license": "ISC",
   "description": "API REST Pokédex avec système d'équipes — projet SB09 (O'Clock)",
@@ -29,7 +38,12 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.11.0",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.9.6"
   },
   "overrides": {
     "uuid": "^11.1.1"
