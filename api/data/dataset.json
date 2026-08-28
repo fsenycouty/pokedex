@@ -1,0 +1,2398 @@
+{
+  "types": [
+    {
+      "name": "Acier",
+      "color": "aaaabb"
+    },
+    {
+      "name": "Combat",
+      "color": "bb5544"
+    },
+    {
+      "name": "Dragon",
+      "color": "7766ee"
+    },
+    {
+      "name": "Eau",
+      "color": "3399ff"
+    },
+    {
+      "name": "Électrik",
+      "color": "ffbb33"
+    },
+    {
+      "name": "Feu",
+      "color": "ff4422"
+    },
+    {
+      "name": "Glace",
+      "color": "77ddff"
+    },
+    {
+      "name": "Insecte",
+      "color": "aabb22"
+    },
+    {
+      "name": "Normal",
+      "color": "bbaabb"
+    },
+    {
+      "name": "Plante",
+      "color": "77cc55"
+    },
+    {
+      "name": "Poison",
+      "color": "aa5599"
+    },
+    {
+      "name": "Psy",
+      "color": "ff5599"
+    },
+    {
+      "name": "Roche",
+      "color": "bbaa66"
+    },
+    {
+      "name": "Sol",
+      "color": "ddbb55"
+    },
+    {
+      "name": "Spectre",
+      "color": "6666bb"
+    },
+    {
+      "name": "Ténèbres",
+      "color": "665544"
+    },
+    {
+      "name": "Vol",
+      "color": "6699ff"
+    }
+  ],
+  "pokemons": [
+    {
+      "name": "Bulbizarre",
+      "hp": 45,
+      "atk": 49,
+      "def": 49,
+      "atk_spe": 65,
+      "def_spe": 65,
+      "speed": 45
+    },
+    {
+      "name": "Herbizarre",
+      "hp": 60,
+      "atk": 62,
+      "def": 63,
+      "atk_spe": 80,
+      "def_spe": 80,
+      "speed": 60
+    },
+    {
+      "name": "Florizarre",
+      "hp": 80,
+      "atk": 82,
+      "def": 83,
+      "atk_spe": 100,
+      "def_spe": 100,
+      "speed": 80
+    },
+    {
+      "name": "Salameche",
+      "hp": 39,
+      "atk": 52,
+      "def": 43,
+      "atk_spe": 60,
+      "def_spe": 50,
+      "speed": 65
+    },
+    {
+      "name": "Reptincel",
+      "hp": 58,
+      "atk": 64,
+      "def": 58,
+      "atk_spe": 80,
+      "def_spe": 65,
+      "speed": 80
+    },
+    {
+      "name": "Dracaufeu",
+      "hp": 78,
+      "atk": 84,
+      "def": 78,
+      "atk_spe": 109,
+      "def_spe": 85,
+      "speed": 100
+    },
+    {
+      "name": "Carapuce",
+      "hp": 44,
+      "atk": 48,
+      "def": 65,
+      "atk_spe": 50,
+      "def_spe": 64,
+      "speed": 43
+    },
+    {
+      "name": "Carabaffe",
+      "hp": 59,
+      "atk": 63,
+      "def": 80,
+      "atk_spe": 65,
+      "def_spe": 80,
+      "speed": 58
+    },
+    {
+      "name": "Tortank",
+      "hp": 79,
+      "atk": 83,
+      "def": 100,
+      "atk_spe": 85,
+      "def_spe": 105,
+      "speed": 78
+    },
+    {
+      "name": "Chenipan",
+      "hp": 45,
+      "atk": 30,
+      "def": 35,
+      "atk_spe": 20,
+      "def_spe": 20,
+      "speed": 45
+    },
+    {
+      "name": "Chrysacier",
+      "hp": 50,
+      "atk": 20,
+      "def": 55,
+      "atk_spe": 25,
+      "def_spe": 25,
+      "speed": 30
+    },
+    {
+      "name": "Papilusion",
+      "hp": 60,
+      "atk": 45,
+      "def": 50,
+      "atk_spe": 80,
+      "def_spe": 80,
+      "speed": 70
+    },
+    {
+      "name": "Aspicot",
+      "hp": 40,
+      "atk": 35,
+      "def": 30,
+      "atk_spe": 20,
+      "def_spe": 20,
+      "speed": 50
+    },
+    {
+      "name": "Coconfort",
+      "hp": 45,
+      "atk": 25,
+      "def": 50,
+      "atk_spe": 25,
+      "def_spe": 25,
+      "speed": 35
+    },
+    {
+      "name": "Dardargnan",
+      "hp": 65,
+      "atk": 80,
+      "def": 40,
+      "atk_spe": 45,
+      "def_spe": 80,
+      "speed": 75
+    },
+    {
+      "name": "Roucool",
+      "hp": 40,
+      "atk": 45,
+      "def": 40,
+      "atk_spe": 35,
+      "def_spe": 35,
+      "speed": 56
+    },
+    {
+      "name": "Roucoups",
+      "hp": 63,
+      "atk": 60,
+      "def": 55,
+      "atk_spe": 50,
+      "def_spe": 50,
+      "speed": 71
+    },
+    {
+      "name": "Roucarnage",
+      "hp": 83,
+      "atk": 80,
+      "def": 75,
+      "atk_spe": 70,
+      "def_spe": 70,
+      "speed": 91
+    },
+    {
+      "name": "Rattata",
+      "hp": 30,
+      "atk": 56,
+      "def": 35,
+      "atk_spe": 25,
+      "def_spe": 35,
+      "speed": 72
+    },
+    {
+      "name": "Rattatac",
+      "hp": 55,
+      "atk": 81,
+      "def": 60,
+      "atk_spe": 50,
+      "def_spe": 70,
+      "speed": 97
+    },
+    {
+      "name": "Piafabec",
+      "hp": 40,
+      "atk": 60,
+      "def": 30,
+      "atk_spe": 31,
+      "def_spe": 31,
+      "speed": 70
+    },
+    {
+      "name": "Rapasdepic",
+      "hp": 65,
+      "atk": 90,
+      "def": 65,
+      "atk_spe": 61,
+      "def_spe": 61,
+      "speed": 100
+    },
+    {
+      "name": "Abo",
+      "hp": 35,
+      "atk": 60,
+      "def": 44,
+      "atk_spe": 40,
+      "def_spe": 54,
+      "speed": 55
+    },
+    {
+      "name": "Arbok",
+      "hp": 60,
+      "atk": 85,
+      "def": 69,
+      "atk_spe": 65,
+      "def_spe": 79,
+      "speed": 80
+    },
+    {
+      "name": "Pikachu",
+      "hp": 35,
+      "atk": 55,
+      "def": 30,
+      "atk_spe": 50,
+      "def_spe": 40,
+      "speed": 90
+    },
+    {
+      "name": "Raichu",
+      "hp": 60,
+      "atk": 90,
+      "def": 55,
+      "atk_spe": 90,
+      "def_spe": 80,
+      "speed": 100
+    },
+    {
+      "name": "Sabelette",
+      "hp": 50,
+      "atk": 75,
+      "def": 85,
+      "atk_spe": 20,
+      "def_spe": 30,
+      "speed": 40
+    },
+    {
+      "name": "Sablaireau",
+      "hp": 75,
+      "atk": 100,
+      "def": 110,
+      "atk_spe": 45,
+      "def_spe": 55,
+      "speed": 65
+    },
+    {
+      "name": "Nidoran F",
+      "hp": 55,
+      "atk": 47,
+      "def": 52,
+      "atk_spe": 40,
+      "def_spe": 40,
+      "speed": 41
+    },
+    {
+      "name": "Nidorina",
+      "hp": 70,
+      "atk": 62,
+      "def": 67,
+      "atk_spe": 55,
+      "def_spe": 55,
+      "speed": 56
+    },
+    {
+      "name": "Nidoqueen",
+      "hp": 90,
+      "atk": 82,
+      "def": 87,
+      "atk_spe": 75,
+      "def_spe": 85,
+      "speed": 76
+    },
+    {
+      "name": "Nidoran M",
+      "hp": 46,
+      "atk": 57,
+      "def": 40,
+      "atk_spe": 40,
+      "def_spe": 40,
+      "speed": 50
+    },
+    {
+      "name": "Nidorino",
+      "hp": 61,
+      "atk": 72,
+      "def": 57,
+      "atk_spe": 55,
+      "def_spe": 55,
+      "speed": 65
+    },
+    {
+      "name": "Nidoking",
+      "hp": 81,
+      "atk": 92,
+      "def": 77,
+      "atk_spe": 85,
+      "def_spe": 75,
+      "speed": 85
+    },
+    {
+      "name": "Melofee",
+      "hp": 70,
+      "atk": 45,
+      "def": 48,
+      "atk_spe": 60,
+      "def_spe": 65,
+      "speed": 35
+    },
+    {
+      "name": "Melodelfe",
+      "hp": 95,
+      "atk": 70,
+      "def": 73,
+      "atk_spe": 85,
+      "def_spe": 90,
+      "speed": 60
+    },
+    {
+      "name": "Goupix",
+      "hp": 38,
+      "atk": 41,
+      "def": 40,
+      "atk_spe": 50,
+      "def_spe": 65,
+      "speed": 65
+    },
+    {
+      "name": "Feunard",
+      "hp": 73,
+      "atk": 76,
+      "def": 75,
+      "atk_spe": 81,
+      "def_spe": 100,
+      "speed": 100
+    },
+    {
+      "name": "Rondoudou",
+      "hp": 115,
+      "atk": 45,
+      "def": 20,
+      "atk_spe": 45,
+      "def_spe": 25,
+      "speed": 20
+    },
+    {
+      "name": "Grodoudou",
+      "hp": 140,
+      "atk": 70,
+      "def": 45,
+      "atk_spe": 75,
+      "def_spe": 50,
+      "speed": 45
+    },
+    {
+      "name": "Nosferapti",
+      "hp": 40,
+      "atk": 45,
+      "def": 35,
+      "atk_spe": 30,
+      "def_spe": 40,
+      "speed": 55
+    },
+    {
+      "name": "Nosferalto",
+      "hp": 75,
+      "atk": 80,
+      "def": 70,
+      "atk_spe": 65,
+      "def_spe": 75,
+      "speed": 90
+    },
+    {
+      "name": "Mystherbe",
+      "hp": 45,
+      "atk": 50,
+      "def": 55,
+      "atk_spe": 75,
+      "def_spe": 65,
+      "speed": 30
+    },
+    {
+      "name": "Ortide",
+      "hp": 60,
+      "atk": 65,
+      "def": 70,
+      "atk_spe": 85,
+      "def_spe": 75,
+      "speed": 40
+    },
+    {
+      "name": "Rafflesia",
+      "hp": 75,
+      "atk": 80,
+      "def": 85,
+      "atk_spe": 100,
+      "def_spe": 90,
+      "speed": 50
+    },
+    {
+      "name": "Paras",
+      "hp": 35,
+      "atk": 70,
+      "def": 55,
+      "atk_spe": 45,
+      "def_spe": 55,
+      "speed": 25
+    },
+    {
+      "name": "Parasect",
+      "hp": 60,
+      "atk": 95,
+      "def": 80,
+      "atk_spe": 60,
+      "def_spe": 80,
+      "speed": 30
+    },
+    {
+      "name": "Mimitoss",
+      "hp": 60,
+      "atk": 55,
+      "def": 50,
+      "atk_spe": 40,
+      "def_spe": 55,
+      "speed": 45
+    },
+    {
+      "name": "Aeromite",
+      "hp": 70,
+      "atk": 65,
+      "def": 60,
+      "atk_spe": 90,
+      "def_spe": 75,
+      "speed": 90
+    },
+    {
+      "name": "Taupiqueur",
+      "hp": 10,
+      "atk": 55,
+      "def": 25,
+      "atk_spe": 35,
+      "def_spe": 45,
+      "speed": 95
+    },
+    {
+      "name": "Triopikeur",
+      "hp": 35,
+      "atk": 80,
+      "def": 50,
+      "atk_spe": 50,
+      "def_spe": 70,
+      "speed": 120
+    },
+    {
+      "name": "Miaouss",
+      "hp": 40,
+      "atk": 45,
+      "def": 35,
+      "atk_spe": 40,
+      "def_spe": 40,
+      "speed": 90
+    },
+    {
+      "name": "Persian",
+      "hp": 65,
+      "atk": 70,
+      "def": 60,
+      "atk_spe": 65,
+      "def_spe": 65,
+      "speed": 115
+    },
+    {
+      "name": "Psykokwak",
+      "hp": 50,
+      "atk": 52,
+      "def": 48,
+      "atk_spe": 65,
+      "def_spe": 50,
+      "speed": 55
+    },
+    {
+      "name": "Akwakwak",
+      "hp": 80,
+      "atk": 82,
+      "def": 78,
+      "atk_spe": 95,
+      "def_spe": 80,
+      "speed": 85
+    },
+    {
+      "name": "Ferosinge",
+      "hp": 40,
+      "atk": 80,
+      "def": 35,
+      "atk_spe": 35,
+      "def_spe": 45,
+      "speed": 70
+    },
+    {
+      "name": "Colossinge",
+      "hp": 65,
+      "atk": 105,
+      "def": 60,
+      "atk_spe": 60,
+      "def_spe": 70,
+      "speed": 95
+    },
+    {
+      "name": "Caninos",
+      "hp": 55,
+      "atk": 70,
+      "def": 45,
+      "atk_spe": 70,
+      "def_spe": 50,
+      "speed": 60
+    },
+    {
+      "name": "Arcanin",
+      "hp": 90,
+      "atk": 110,
+      "def": 80,
+      "atk_spe": 100,
+      "def_spe": 80,
+      "speed": 95
+    },
+    {
+      "name": "Ptitard",
+      "hp": 40,
+      "atk": 50,
+      "def": 40,
+      "atk_spe": 40,
+      "def_spe": 40,
+      "speed": 90
+    },
+    {
+      "name": "Tetarte",
+      "hp": 65,
+      "atk": 65,
+      "def": 65,
+      "atk_spe": 50,
+      "def_spe": 50,
+      "speed": 90
+    },
+    {
+      "name": "Tartard",
+      "hp": 90,
+      "atk": 85,
+      "def": 95,
+      "atk_spe": 70,
+      "def_spe": 90,
+      "speed": 70
+    },
+    {
+      "name": "Abra",
+      "hp": 25,
+      "atk": 20,
+      "def": 15,
+      "atk_spe": 105,
+      "def_spe": 55,
+      "speed": 90
+    },
+    {
+      "name": "Kadabra",
+      "hp": 40,
+      "atk": 35,
+      "def": 30,
+      "atk_spe": 120,
+      "def_spe": 70,
+      "speed": 105
+    },
+    {
+      "name": "Alakazam",
+      "hp": 55,
+      "atk": 50,
+      "def": 45,
+      "atk_spe": 135,
+      "def_spe": 85,
+      "speed": 120
+    },
+    {
+      "name": "Machoc",
+      "hp": 70,
+      "atk": 80,
+      "def": 50,
+      "atk_spe": 35,
+      "def_spe": 35,
+      "speed": 35
+    },
+    {
+      "name": "Machopeur",
+      "hp": 80,
+      "atk": 100,
+      "def": 70,
+      "atk_spe": 50,
+      "def_spe": 60,
+      "speed": 45
+    },
+    {
+      "name": "Mackogneur",
+      "hp": 90,
+      "atk": 130,
+      "def": 80,
+      "atk_spe": 65,
+      "def_spe": 85,
+      "speed": 55
+    },
+    {
+      "name": "Chetiflor",
+      "hp": 50,
+      "atk": 75,
+      "def": 35,
+      "atk_spe": 70,
+      "def_spe": 30,
+      "speed": 40
+    },
+    {
+      "name": "Boustiflor",
+      "hp": 65,
+      "atk": 90,
+      "def": 50,
+      "atk_spe": 85,
+      "def_spe": 45,
+      "speed": 55
+    },
+    {
+      "name": "Empiflor",
+      "hp": 80,
+      "atk": 105,
+      "def": 65,
+      "atk_spe": 100,
+      "def_spe": 60,
+      "speed": 70
+    },
+    {
+      "name": "Tentacool",
+      "hp": 40,
+      "atk": 40,
+      "def": 35,
+      "atk_spe": 50,
+      "def_spe": 100,
+      "speed": 70
+    },
+    {
+      "name": "Tentacruel",
+      "hp": 80,
+      "atk": 70,
+      "def": 65,
+      "atk_spe": 80,
+      "def_spe": 120,
+      "speed": 100
+    },
+    {
+      "name": "Racaillou",
+      "hp": 40,
+      "atk": 80,
+      "def": 100,
+      "atk_spe": 30,
+      "def_spe": 30,
+      "speed": 20
+    },
+    {
+      "name": "Gravalanch",
+      "hp": 55,
+      "atk": 95,
+      "def": 115,
+      "atk_spe": 45,
+      "def_spe": 45,
+      "speed": 35
+    },
+    {
+      "name": "Grolem",
+      "hp": 80,
+      "atk": 110,
+      "def": 130,
+      "atk_spe": 55,
+      "def_spe": 65,
+      "speed": 45
+    },
+    {
+      "name": "Ponyta",
+      "hp": 50,
+      "atk": 85,
+      "def": 55,
+      "atk_spe": 65,
+      "def_spe": 65,
+      "speed": 90
+    },
+    {
+      "name": "Galopa",
+      "hp": 65,
+      "atk": 100,
+      "def": 70,
+      "atk_spe": 80,
+      "def_spe": 80,
+      "speed": 105
+    },
+    {
+      "name": "Ramoloss",
+      "hp": 90,
+      "atk": 65,
+      "def": 65,
+      "atk_spe": 40,
+      "def_spe": 40,
+      "speed": 15
+    },
+    {
+      "name": "Flagadoss",
+      "hp": 95,
+      "atk": 75,
+      "def": 110,
+      "atk_spe": 100,
+      "def_spe": 80,
+      "speed": 30
+    },
+    {
+      "name": "Magneti",
+      "hp": 25,
+      "atk": 35,
+      "def": 70,
+      "atk_spe": 95,
+      "def_spe": 55,
+      "speed": 45
+    },
+    {
+      "name": "Magneton",
+      "hp": 50,
+      "atk": 60,
+      "def": 95,
+      "atk_spe": 120,
+      "def_spe": 70,
+      "speed": 70
+    },
+    {
+      "name": "Canarticho",
+      "hp": 52,
+      "atk": 65,
+      "def": 55,
+      "atk_spe": 58,
+      "def_spe": 62,
+      "speed": 60
+    },
+    {
+      "name": "Doduo",
+      "hp": 35,
+      "atk": 85,
+      "def": 45,
+      "atk_spe": 35,
+      "def_spe": 35,
+      "speed": 75
+    },
+    {
+      "name": "Dodrio",
+      "hp": 60,
+      "atk": 110,
+      "def": 70,
+      "atk_spe": 60,
+      "def_spe": 60,
+      "speed": 100
+    },
+    {
+      "name": "Otaria",
+      "hp": 65,
+      "atk": 45,
+      "def": 55,
+      "atk_spe": 45,
+      "def_spe": 70,
+      "speed": 45
+    },
+    {
+      "name": "Lamantine",
+      "hp": 90,
+      "atk": 70,
+      "def": 80,
+      "atk_spe": 70,
+      "def_spe": 95,
+      "speed": 70
+    },
+    {
+      "name": "Tadmorv",
+      "hp": 80,
+      "atk": 80,
+      "def": 50,
+      "atk_spe": 40,
+      "def_spe": 50,
+      "speed": 25
+    },
+    {
+      "name": "Grotadmorv",
+      "hp": 105,
+      "atk": 105,
+      "def": 75,
+      "atk_spe": 65,
+      "def_spe": 100,
+      "speed": 50
+    },
+    {
+      "name": "Kokiyas",
+      "hp": 30,
+      "atk": 65,
+      "def": 100,
+      "atk_spe": 45,
+      "def_spe": 25,
+      "speed": 40
+    },
+    {
+      "name": "Crustabri",
+      "hp": 50,
+      "atk": 95,
+      "def": 180,
+      "atk_spe": 85,
+      "def_spe": 45,
+      "speed": 70
+    },
+    {
+      "name": "Fantominus",
+      "hp": 30,
+      "atk": 35,
+      "def": 30,
+      "atk_spe": 100,
+      "def_spe": 35,
+      "speed": 80
+    },
+    {
+      "name": "Spectrum",
+      "hp": 45,
+      "atk": 50,
+      "def": 45,
+      "atk_spe": 115,
+      "def_spe": 55,
+      "speed": 95
+    },
+    {
+      "name": "Ectoplasma",
+      "hp": 60,
+      "atk": 65,
+      "def": 60,
+      "atk_spe": 130,
+      "def_spe": 75,
+      "speed": 110
+    },
+    {
+      "name": "Onix",
+      "hp": 35,
+      "atk": 45,
+      "def": 160,
+      "atk_spe": 30,
+      "def_spe": 45,
+      "speed": 70
+    },
+    {
+      "name": "Soporifik",
+      "hp": 60,
+      "atk": 48,
+      "def": 45,
+      "atk_spe": 43,
+      "def_spe": 90,
+      "speed": 42
+    },
+    {
+      "name": "Hypnomade",
+      "hp": 85,
+      "atk": 73,
+      "def": 70,
+      "atk_spe": 73,
+      "def_spe": 115,
+      "speed": 67
+    },
+    {
+      "name": "Krabby",
+      "hp": 30,
+      "atk": 105,
+      "def": 90,
+      "atk_spe": 25,
+      "def_spe": 25,
+      "speed": 50
+    },
+    {
+      "name": "Krabboss",
+      "hp": 55,
+      "atk": 130,
+      "def": 115,
+      "atk_spe": 50,
+      "def_spe": 50,
+      "speed": 75
+    },
+    {
+      "name": "Voltorbe",
+      "hp": 40,
+      "atk": 30,
+      "def": 50,
+      "atk_spe": 55,
+      "def_spe": 55,
+      "speed": 100
+    },
+    {
+      "name": "Electrode",
+      "hp": 60,
+      "atk": 50,
+      "def": 70,
+      "atk_spe": 80,
+      "def_spe": 80,
+      "speed": 140
+    },
+    {
+      "name": "Noeunoeuf",
+      "hp": 60,
+      "atk": 40,
+      "def": 80,
+      "atk_spe": 60,
+      "def_spe": 45,
+      "speed": 40
+    },
+    {
+      "name": "Noadkoko",
+      "hp": 95,
+      "atk": 95,
+      "def": 85,
+      "atk_spe": 125,
+      "def_spe": 65,
+      "speed": 55
+    },
+    {
+      "name": "Osselait",
+      "hp": 50,
+      "atk": 50,
+      "def": 95,
+      "atk_spe": 40,
+      "def_spe": 50,
+      "speed": 35
+    },
+    {
+      "name": "Ossatueur",
+      "hp": 60,
+      "atk": 80,
+      "def": 110,
+      "atk_spe": 50,
+      "def_spe": 80,
+      "speed": 45
+    },
+    {
+      "name": "Kicklee",
+      "hp": 50,
+      "atk": 120,
+      "def": 53,
+      "atk_spe": 35,
+      "def_spe": 110,
+      "speed": 87
+    },
+    {
+      "name": "Tygnon",
+      "hp": 50,
+      "atk": 105,
+      "def": 79,
+      "atk_spe": 35,
+      "def_spe": 110,
+      "speed": 76
+    },
+    {
+      "name": "Excelangue",
+      "hp": 90,
+      "atk": 55,
+      "def": 75,
+      "atk_spe": 60,
+      "def_spe": 75,
+      "speed": 30
+    },
+    {
+      "name": "Smogo",
+      "hp": 40,
+      "atk": 65,
+      "def": 95,
+      "atk_spe": 60,
+      "def_spe": 45,
+      "speed": 35
+    },
+    {
+      "name": "Smogogo",
+      "hp": 65,
+      "atk": 90,
+      "def": 120,
+      "atk_spe": 85,
+      "def_spe": 70,
+      "speed": 60
+    },
+    {
+      "name": "Rhinocorne",
+      "hp": 80,
+      "atk": 85,
+      "def": 95,
+      "atk_spe": 30,
+      "def_spe": 30,
+      "speed": 25
+    },
+    {
+      "name": "Rhinoferos",
+      "hp": 105,
+      "atk": 130,
+      "def": 120,
+      "atk_spe": 45,
+      "def_spe": 45,
+      "speed": 40
+    },
+    {
+      "name": "Leveinard",
+      "hp": 250,
+      "atk": 5,
+      "def": 5,
+      "atk_spe": 35,
+      "def_spe": 105,
+      "speed": 50
+    },
+    {
+      "name": "Saquedeneu",
+      "hp": 65,
+      "atk": 55,
+      "def": 115,
+      "atk_spe": 100,
+      "def_spe": 40,
+      "speed": 60
+    },
+    {
+      "name": "Kangourex",
+      "hp": 105,
+      "atk": 95,
+      "def": 80,
+      "atk_spe": 40,
+      "def_spe": 80,
+      "speed": 90
+    },
+    {
+      "name": "Hypotrempe",
+      "hp": 30,
+      "atk": 40,
+      "def": 70,
+      "atk_spe": 70,
+      "def_spe": 25,
+      "speed": 60
+    },
+    {
+      "name": "Hypocean",
+      "hp": 55,
+      "atk": 65,
+      "def": 95,
+      "atk_spe": 95,
+      "def_spe": 45,
+      "speed": 85
+    },
+    {
+      "name": "Poissirene",
+      "hp": 45,
+      "atk": 67,
+      "def": 60,
+      "atk_spe": 35,
+      "def_spe": 50,
+      "speed": 63
+    },
+    {
+      "name": "Poissoroy",
+      "hp": 80,
+      "atk": 92,
+      "def": 65,
+      "atk_spe": 65,
+      "def_spe": 80,
+      "speed": 68
+    },
+    {
+      "name": "Stari",
+      "hp": 30,
+      "atk": 45,
+      "def": 55,
+      "atk_spe": 70,
+      "def_spe": 55,
+      "speed": 85
+    },
+    {
+      "name": "Staross",
+      "hp": 60,
+      "atk": 75,
+      "def": 85,
+      "atk_spe": 100,
+      "def_spe": 85,
+      "speed": 115
+    },
+    {
+      "name": "M.Mime",
+      "hp": 40,
+      "atk": 45,
+      "def": 65,
+      "atk_spe": 100,
+      "def_spe": 120,
+      "speed": 90
+    },
+    {
+      "name": "Insecateur",
+      "hp": 70,
+      "atk": 110,
+      "def": 80,
+      "atk_spe": 55,
+      "def_spe": 80,
+      "speed": 105
+    },
+    {
+      "name": "Lippoutou",
+      "hp": 65,
+      "atk": 50,
+      "def": 35,
+      "atk_spe": 115,
+      "def_spe": 95,
+      "speed": 95
+    },
+    {
+      "name": "Elektek",
+      "hp": 65,
+      "atk": 83,
+      "def": 57,
+      "atk_spe": 95,
+      "def_spe": 85,
+      "speed": 105
+    },
+    {
+      "name": "Magmar",
+      "hp": 65,
+      "atk": 95,
+      "def": 57,
+      "atk_spe": 100,
+      "def_spe": 85,
+      "speed": 93
+    },
+    {
+      "name": "Scarabrute",
+      "hp": 65,
+      "atk": 125,
+      "def": 100,
+      "atk_spe": 55,
+      "def_spe": 70,
+      "speed": 85
+    },
+    {
+      "name": "Tauros",
+      "hp": 75,
+      "atk": 100,
+      "def": 95,
+      "atk_spe": 40,
+      "def_spe": 70,
+      "speed": 110
+    },
+    {
+      "name": "Magicarpe",
+      "hp": 20,
+      "atk": 10,
+      "def": 55,
+      "atk_spe": 15,
+      "def_spe": 20,
+      "speed": 80
+    },
+    {
+      "name": "Leviator",
+      "hp": 95,
+      "atk": 125,
+      "def": 79,
+      "atk_spe": 60,
+      "def_spe": 100,
+      "speed": 81
+    },
+    {
+      "name": "Lokhlass",
+      "hp": 130,
+      "atk": 85,
+      "def": 80,
+      "atk_spe": 85,
+      "def_spe": 95,
+      "speed": 60
+    },
+    {
+      "name": "Metamorph",
+      "hp": 48,
+      "atk": 48,
+      "def": 48,
+      "atk_spe": 48,
+      "def_spe": 48,
+      "speed": 48
+    },
+    {
+      "name": "Evoli",
+      "hp": 55,
+      "atk": 55,
+      "def": 50,
+      "atk_spe": 45,
+      "def_spe": 65,
+      "speed": 55
+    },
+    {
+      "name": "Aquali",
+      "hp": 130,
+      "atk": 65,
+      "def": 60,
+      "atk_spe": 110,
+      "def_spe": 95,
+      "speed": 65
+    },
+    {
+      "name": "Voltali",
+      "hp": 65,
+      "atk": 65,
+      "def": 60,
+      "atk_spe": 110,
+      "def_spe": 95,
+      "speed": 130
+    },
+    {
+      "name": "Pyroli",
+      "hp": 65,
+      "atk": 130,
+      "def": 60,
+      "atk_spe": 95,
+      "def_spe": 110,
+      "speed": 65
+    },
+    {
+      "name": "Porygon",
+      "hp": 65,
+      "atk": 60,
+      "def": 70,
+      "atk_spe": 85,
+      "def_spe": 75,
+      "speed": 40
+    },
+    {
+      "name": "Amonita",
+      "hp": 35,
+      "atk": 40,
+      "def": 100,
+      "atk_spe": 90,
+      "def_spe": 55,
+      "speed": 35
+    },
+    {
+      "name": "Amonistar",
+      "hp": 70,
+      "atk": 60,
+      "def": 125,
+      "atk_spe": 115,
+      "def_spe": 70,
+      "speed": 55
+    },
+    {
+      "name": "Kabuto",
+      "hp": 30,
+      "atk": 80,
+      "def": 90,
+      "atk_spe": 55,
+      "def_spe": 45,
+      "speed": 55
+    },
+    {
+      "name": "Kabutops",
+      "hp": 60,
+      "atk": 115,
+      "def": 105,
+      "atk_spe": 65,
+      "def_spe": 70,
+      "speed": 80
+    },
+    {
+      "name": "Ptera",
+      "hp": 80,
+      "atk": 105,
+      "def": 65,
+      "atk_spe": 60,
+      "def_spe": 75,
+      "speed": 130
+    },
+    {
+      "name": "Ronflex",
+      "hp": 160,
+      "atk": 110,
+      "def": 65,
+      "atk_spe": 65,
+      "def_spe": 110,
+      "speed": 30
+    },
+    {
+      "name": "Artikodin",
+      "hp": 90,
+      "atk": 85,
+      "def": 100,
+      "atk_spe": 95,
+      "def_spe": 125,
+      "speed": 85
+    },
+    {
+      "name": "Electhor",
+      "hp": 90,
+      "atk": 90,
+      "def": 85,
+      "atk_spe": 125,
+      "def_spe": 90,
+      "speed": 100
+    },
+    {
+      "name": "Sulfura",
+      "hp": 90,
+      "atk": 100,
+      "def": 90,
+      "atk_spe": 125,
+      "def_spe": 85,
+      "speed": 90
+    },
+    {
+      "name": "Minidraco",
+      "hp": 41,
+      "atk": 64,
+      "def": 45,
+      "atk_spe": 50,
+      "def_spe": 50,
+      "speed": 50
+    },
+    {
+      "name": "Draco",
+      "hp": 61,
+      "atk": 84,
+      "def": 65,
+      "atk_spe": 70,
+      "def_spe": 70,
+      "speed": 70
+    },
+    {
+      "name": "Dracolosse",
+      "hp": 91,
+      "atk": 134,
+      "def": 95,
+      "atk_spe": 100,
+      "def_spe": 100,
+      "speed": 80
+    },
+    {
+      "name": "Mewtwo",
+      "hp": 106,
+      "atk": 110,
+      "def": 90,
+      "atk_spe": 154,
+      "def_spe": 90,
+      "speed": 130
+    },
+    {
+      "name": "Mew",
+      "hp": 100,
+      "atk": 100,
+      "def": 100,
+      "atk_spe": 100,
+      "def_spe": 100,
+      "speed": 100
+    }
+  ],
+  "pokemon_type": [
+    {
+      "pokemon_id": 1,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 1,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 2,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 2,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 3,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 3,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 4,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 5,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 6,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 6,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 7,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 8,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 9,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 10,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 11,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 12,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 12,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 13,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 13,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 14,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 14,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 15,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 15,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 16,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 16,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 17,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 17,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 18,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 18,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 19,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 20,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 21,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 21,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 22,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 22,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 23,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 24,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 25,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 26,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 27,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 28,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 29,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 30,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 31,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 31,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 32,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 33,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 34,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 34,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 35,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 36,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 37,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 38,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 39,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 40,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 41,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 41,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 42,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 42,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 43,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 43,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 44,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 44,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 45,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 45,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 46,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 46,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 47,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 47,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 48,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 48,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 49,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 49,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 50,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 51,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 52,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 53,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 54,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 55,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 56,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 57,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 58,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 59,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 60,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 61,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 62,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 62,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 63,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 64,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 65,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 66,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 67,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 68,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 69,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 69,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 70,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 70,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 71,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 71,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 72,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 72,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 73,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 73,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 74,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 74,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 75,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 75,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 76,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 76,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 77,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 78,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 79,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 79,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 80,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 80,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 81,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 81,
+      "type_id": 1
+    },
+    {
+      "pokemon_id": 82,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 82,
+      "type_id": 1
+    },
+    {
+      "pokemon_id": 83,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 83,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 84,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 84,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 85,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 85,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 86,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 87,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 87,
+      "type_id": 7
+    },
+    {
+      "pokemon_id": 88,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 89,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 90,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 91,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 91,
+      "type_id": 7
+    },
+    {
+      "pokemon_id": 92,
+      "type_id": 15
+    },
+    {
+      "pokemon_id": 92,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 93,
+      "type_id": 15
+    },
+    {
+      "pokemon_id": 93,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 94,
+      "type_id": 15
+    },
+    {
+      "pokemon_id": 94,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 95,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 95,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 96,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 97,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 98,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 99,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 100,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 101,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 102,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 102,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 103,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 103,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 104,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 105,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 106,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 107,
+      "type_id": 2
+    },
+    {
+      "pokemon_id": 108,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 109,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 110,
+      "type_id": 11
+    },
+    {
+      "pokemon_id": 111,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 111,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 112,
+      "type_id": 14
+    },
+    {
+      "pokemon_id": 112,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 113,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 114,
+      "type_id": 10
+    },
+    {
+      "pokemon_id": 115,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 116,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 117,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 118,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 119,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 120,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 121,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 121,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 122,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 123,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 123,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 124,
+      "type_id": 7
+    },
+    {
+      "pokemon_id": 124,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 125,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 126,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 127,
+      "type_id": 8
+    },
+    {
+      "pokemon_id": 128,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 129,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 130,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 130,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 131,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 131,
+      "type_id": 7
+    },
+    {
+      "pokemon_id": 132,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 133,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 134,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 135,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 136,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 137,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 138,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 138,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 139,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 139,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 140,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 140,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 141,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 141,
+      "type_id": 4
+    },
+    {
+      "pokemon_id": 142,
+      "type_id": 13
+    },
+    {
+      "pokemon_id": 142,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 143,
+      "type_id": 9
+    },
+    {
+      "pokemon_id": 144,
+      "type_id": 7
+    },
+    {
+      "pokemon_id": 144,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 145,
+      "type_id": 5
+    },
+    {
+      "pokemon_id": 145,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 146,
+      "type_id": 6
+    },
+    {
+      "pokemon_id": 146,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 147,
+      "type_id": 3
+    },
+    {
+      "pokemon_id": 148,
+      "type_id": 3
+    },
+    {
+      "pokemon_id": 149,
+      "type_id": 3
+    },
+    {
+      "pokemon_id": 149,
+      "type_id": 17
+    },
+    {
+      "pokemon_id": 150,
+      "type_id": 12
+    },
+    {
+      "pokemon_id": 151,
+      "type_id": 12
+    }
+  ],
+  "users": [
+    {
+      "username": "Sacha",
+      "email": "sacha@pokedex.io",
+      "password": "Sacha1234"
+    },
+    {
+      "username": "Ondine",
+      "email": "ondine@pokedex.io",
+      "password": "Ondine5678"
+    }
+  ],
+  "teams": [
+    {
+      "name": "Ultimate Team",
+      "description": "La meilleure team du monde",
+      "user_id": 1
+    },
+    {
+      "name": "La Team de l'enfer",
+      "description": "Le feuuuuu",
+      "user_id": 1
+    },
+    {
+      "name": "Squad fofolle",
+      "description": "Pour tout gagner",
+      "user_id": 2
+    }
+  ],
+  "team_pokemon": [
+    {
+      "pokemon_id": 3,
+      "team_id": 1
+    },
+    {
+      "pokemon_id": 6,
+      "team_id": 1
+    },
+    {
+      "pokemon_id": 9,
+      "team_id": 1
+    },
+    {
+      "pokemon_id": 12,
+      "team_id": 1
+    },
+    {
+      "pokemon_id": 15,
+      "team_id": 1
+    },
+    {
+      "pokemon_id": 34,
+      "team_id": 1
+    },
+    {
+      "pokemon_id": 6,
+      "team_id": 2
+    },
+    {
+      "pokemon_id": 38,
+      "team_id": 2
+    },
+    {
+      "pokemon_id": 59,
+      "team_id": 2
+    },
+    {
+      "pokemon_id": 126,
+      "team_id": 2
+    },
+    {
+      "pokemon_id": 136,
+      "team_id": 2
+    },
+    {
+      "pokemon_id": 146,
+      "team_id": 2
+    },
+    {
+      "pokemon_id": 151,
+      "team_id": 3
+    },
+    {
+      "pokemon_id": 150,
+      "team_id": 3
+    },
+    {
+      "pokemon_id": 149,
+      "team_id": 3
+    },
+    {
+      "pokemon_id": 146,
+      "team_id": 3
+    },
+    {
+      "pokemon_id": 145,
+      "team_id": 3
+    },
+    {
+      "pokemon_id": 144,
+      "team_id": 3
+    }
+  ]
+}
