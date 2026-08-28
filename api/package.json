@@ -1,0 +1,37 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --import ./src/tests/setup/env.setup.js --test --test-concurrency=1 src/tests/**/*.test.js",
+    "dev": "nodemon src/server.js",
+    "db:create": "node src/migrations/1.create.tables.js",
+    "db:seed": "node src/migrations/2.seed.tables.js",
+    "db:reset": "node src/migrations/1.create.tables.js && node src/migrations/2.seed.tables.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": ["pokedex", "api-rest", "express", "sequelize"],
+  "author": "Fabrice Seny-Couty",
+  "license": "ISC",
+  "description": "API REST Pokédex avec système d'équipes — projet SB09 (O'Clock)",
+  "dependencies": {
+    "argon2": "^0.45.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "joi": "^18.2.5",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.23.0",
+    "sequelize": "^6.37.8",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}
