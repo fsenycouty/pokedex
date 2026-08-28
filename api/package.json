@@ -5,6 +5,7 @@
   "scripts": {
     "test": "node --import ./src/tests/setup/env.setup.js --test --test-concurrency=1 src/tests/**/*.test.js",
     "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
     "db:create": "node src/migrations/1.create.tables.js",
     "db:seed": "node src/migrations/2.seed.tables.js",
     "db:reset": "node src/migrations/1.create.tables.js && node src/migrations/2.seed.tables.js",

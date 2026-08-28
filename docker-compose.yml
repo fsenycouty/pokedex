@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pokedex
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: ./api
+    ports:
+      - "3050:3050"
+    environment:
+      PORT: 3050
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/pokedex
+      JWT_SECRET: docker_dev_secret_change_me
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
