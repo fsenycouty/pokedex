@@ -27,6 +27,6 @@ describe("password.service", () => {
 
     const result = await verifyPassword(hash, "MauvaisMotDePasse1");
 
-    assert.strictEqual(result, true);
+    assert.strictEqual(result, false);
   });
 });
