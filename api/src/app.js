@@ -39,4 +39,5 @@ app.use(errorController.route404);
 // Toutes les routes qui lancent une erreur gérées par ce controller
 app.use(errorController.errorHandler);
 
+// test github action
 export default app;
