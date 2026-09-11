@@ -8,9 +8,9 @@ const options = {
     info: {
       title: "Pokédex API",
       version: "1.0.0",
-      description: "API REST Pokédex avec système d'équipes (SB09)",
+      description: "API REST Pokédex avec système d'équipes",
     },
-    servers: [{ url: process.env.RENDER_EXTERNAL_URL ||`http://localhost:${process.env.PORT || 3050}` }],
+    servers: [{ url: process.env.RENDER_EXTERNAL_URL ||`http://localhost:${process.env.PORT || 3000}` }],
     components: {
       securitySchemes: {
         bearerAuth: {

@@ -6,10 +6,10 @@
 ### ===========================
 
 ### GET /pokemons - tous les pokemons
-GET http://localhost:3050/pokemons HTTP/1.1
+GET http://localhost:3000/pokemons HTTP/1.1
 content-type: application/json
 
 ### GET /pokemons/:id - un pokemon
-GET http://localhost:3050/pokemons/5 HTTP/1.1
+GET http://localhost:3000/pokemons/5 HTTP/1.1
 content-type: application/json
 

@@ -16,8 +16,15 @@ const server = app.listen(PORT, () => {
  * gestionnaire, Node coupe brutalement sans libérer la connexion Sequelize.
  * @param {string} signal - Le signal reçu (SIGTERM ou SIGINT), utile pour le log.
  */
+let isShuttingDown = false;
+
 async function gracefulShutdown(signal) {
-  console.log(`${signal} reçu, arrêt propre du serveur...`);
+  if (isShuttingDown) {
+    return;
+  }
+  isShuttingDown = true;
+
+  console.log(`\n${signal} reçu, arrêt propre du serveur...`);
 
   // On arrête d'abord d'accepter de nouvelles requêtes et on attend
   // que les requêtes déjà en cours se terminent.

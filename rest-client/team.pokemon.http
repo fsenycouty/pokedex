@@ -7,7 +7,7 @@
 
 ### POST /auth/login - récupère le token utilisé par les requêtes protégées ci-dessous
 # @name login
-POST http://localhost:3050/auth/login HTTP/1.1
+POST http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
 {
@@ -18,7 +18,7 @@ content-type: application/json
 @authToken = {{login.response.body.token}}
 
 ### POST /teams/:id/pokemons - un nouveau pokemon à une équipe
-POST http://localhost:3050/teams/5/pokemons HTTP/1.1
+POST http://localhost:3000/teams/5/pokemons HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{authToken}}
 
@@ -27,6 +27,6 @@ Authorization: Bearer {{authToken}}
 }
 
 ### DELETE /teams/:idTeam/pokemons/:idPokemon - supprime un pokemon d'équipe
-DELETE http://localhost:3050/teams/5/pokemons/8 HTTP/1.1
+DELETE http://localhost:3000/teams/5/pokemons/8 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{authToken}}

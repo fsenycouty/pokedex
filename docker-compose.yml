@@ -18,7 +18,7 @@ services:
   api:
     build: ./api
     ports:
-      - "3050:3050"
+      - "3000:3000"
     environment:
       - PORT=${PORT}
       - DATABASE_URL=${DATABASE_URL}

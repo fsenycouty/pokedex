@@ -14,6 +14,6 @@ RUN npm ci --omit=dev
 COPY src ./src
 COPY data ./data
 
-EXPOSE 3050
+EXPOSE 3000
 
 CMD ["npm", "start"]

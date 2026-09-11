@@ -7,7 +7,7 @@
 
 ### POST /auth/login - récupère le token utilisé par les requêtes protégées ci-dessous
 # @name login
-POST http://localhost:3050/auth/login HTTP/1.1
+POST http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
 {
@@ -18,15 +18,15 @@ content-type: application/json
 @authToken = {{login.response.body.token}}
 
 ### GET /teams - toutes les équipes
-GET http://localhost:3050/teams HTTP/1.1
+GET http://localhost:3000/teams HTTP/1.1
 content-type: application/json
 
 ### GET /teams/:id - une équipe
-GET http://localhost:3050/teams/3 HTTP/1.1
+GET http://localhost:3000/teams/3 HTTP/1.1
 content-type: application/json
 
 ### POST /teams - une nouvelle équipe
-POST http://localhost:3050/teams HTTP/1.1
+POST http://localhost:3000/teams HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{authToken}}
 
@@ -36,7 +36,7 @@ Authorization: Bearer {{authToken}}
 }
 
 ### PATCH /teams/:id - le nom d'une équipe
-PATCH http://localhost:3050/teams/4 HTTP/1.1
+PATCH http://localhost:3000/teams/4 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{authToken}}
 
@@ -45,6 +45,6 @@ Authorization: Bearer {{authToken}}
 }
 
 ### DELETE /teams/:id - supprime une équipe
-DELETE http://localhost:3050/teams/4 HTTP/1.1
+DELETE http://localhost:3000/teams/4 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{authToken}}
