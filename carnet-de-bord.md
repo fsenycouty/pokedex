@@ -1,5 +1,31 @@
 # Carnet de bord — Projet Pokédex (SB09)
 
+## 2026-09-11
+
+### Objectifs du jour
+Déployer l'API Pokédex en production avec Docker.
+
+### Travail réalisé
+- Déploiement sur Render (Web Service, plan Free) à partir du `Dockerfile` existant dans `api/`, avec `Root Directory: api`.
+- Choix d'une base PostgreSQL managée séparée sur Neon (plutôt que Postgres Render) pour éviter l'expiration automatique après 30 jours du plan gratuit Render.
+- Ajout de `dialectOptions.ssl` dans `sequelize.client.js`, conditionné à `NODE_ENV=production` : Neon impose une connexion chiffrée, contrairement à la base Docker locale.
+- Ajout d'un arrêt propre du serveur (`gracefulShutdown` sur `SIGTERM`/`SIGINT`) dans `server.js`, pour fermer proprement la connexion Sequelize avant extinction — nécessaire car Render envoie `SIGTERM` en mise en veille du plan Free après 15 minutes d'inactivité (assisté par Claude code).
+- Correction de l'URL `servers` dans la config Swagger (`swagger.js`) : elle était codée en dur sur `localhost`, cassant le "Try it out" une fois déployé. Rendue dynamique via `process.env.RENDER_EXTERNAL_URL` (variable injectée automatiquement par Render), avec repli sur `localhost` en dev (assisté par Claude code).
+- Initialisation du schéma et des données sur Neon (`db:create`/`db:seed`) depuis la machine locale, en pointant temporairement `DATABASE_URL` vers Neon.
+- Ajout de `ports: ["5432:5432"]` au service `db` du `docker-compose.yml` : absent jusqu'ici, ce qui empêchait toute connexion à Postgres depuis l'hôte (donc `npm test`, exécuté hors conteneur).
+- Création manuelle de la base `pokedex_test` dans le conteneur Docker local (`psql -c "CREATE DATABASE pokedex_test;"`) — seule `pokedex` (`POSTGRES_DB`) est créée automatiquement au démarrage du conteneur.
+
+### Difficultés rencontrées / corrigées
+- **`npm test` → `ECONNREFUSED 127.0.0.1:5432`** : port du service `db` non publié vers l'hôte dans `docker-compose.yml`. Corrigé par l'ajout de `ports: ["5432:5432"]`.
+- **`npm test` → `database "pokedex_test" does not exist`** : base de test jamais créée dans le conteneur Docker. Corrigés en créant `pokedex_test` manuellement.
+
+### À poursuivre
+- Mettre en place l'automatisation de la création de `pokedex_test` via un script dans `docker-entrypoint-initdb.d/`, pour éviter de la recréer manuellement à chaque réinitialisation du volume.
+- GitHub Actions CI avec PostgreSQL service container.
+- Vérifier la configuration CORS de `app.js` en vue d'une éventuelle consommation de l'API par un frontend séparé.
+
+---
+
 ## 2026-08-28
  
 ### Objectifs du jour
