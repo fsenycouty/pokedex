@@ -8,6 +8,18 @@ const isTest = process.env.NODE_ENV === "test";
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   // Options de connexion à la BDD
   logging: !isTest && console.log, // logs SQL coupés en test, affichés en dev
+  // SSL requis en prod (Neon impose une connexion chiffrée) ; rejectUnauthorized: false
+  // car le conteneur Docker minimal n'a pas la chaîne de certificats CA complète.
+  // En local/dev/test, la BDD Docker n'a pas SSL activé, donc on ne l'impose pas ici.
+  dialectOptions:
+    process.env.NODE_ENV === "production"
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        }
+      : {},
   define: {
     // Ajoute les champs createdAt et updatedAt à chaque table
     timestamps: true,
