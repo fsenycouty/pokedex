@@ -49,3 +49,34 @@ jobs:
       - run: npm run lint
 
       - run: npm test
+
+      # Connexion au registre GHCR : pousser une image.
+      # GITHUB_TOKEN est fourni automatiquement par GitHub Actions.
+      - name: Connexion à GHCR
+        if: success() && github.ref == 'refs/heads/main'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Construit l'image Docker depuis api/Dockerfile et la pousse sur GHCR.
+      # Deux tags : "latest" pour la dernière version, et le hash du commit
+      # pour garder un historique précis de chaque image déployée.
+      # Ne s'exécute que sur main, et seulement si les tests ont réussi.
+      - name: Build et push de l'image
+        if: success() && github.ref == 'refs/heads/main'
+        uses: docker/build-push-action@v6
+        with:
+          context: ./api
+          push: true
+          tags: |
+            ghcr.io/fsenycouty/pokedex:latest
+            ghcr.io/fsenycouty/pokedex:${{ github.sha }}
+
+      # Déclenche le redéploiement explicitement via le Deploy Hook.
+      # Render ne redéploie pas automatiquement quand une nouvelle image
+      # arrive sur GHCR (contrairement au mode "build depuis Dockerfile").
+      - name: Déclencher le déploiement Render
+        if: success() && github.ref == 'refs/heads/main'
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
