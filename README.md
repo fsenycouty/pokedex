@@ -37,6 +37,20 @@ jeu) via une API REST sécurisée.
   - [Déploiement](#déploiement)
   - [Conception](#conception)
 
+```drawio width=800
+<mxfile>
+  <diagram id="default" name="Page-1">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+```
+
+
 ## Fonctionnalités
 
 - **Pokédex** : consultation de la liste et du détail de 151 Pokémon, avec leurs types et statistiques
