@@ -1,11 +1,45 @@
 # Carnet de bord — Projet Pokédex (SB09)
 
+## 2026-09-13
+
+### Objectifs du jour
+
+Mettre en place un pipeline CI/CD complet (protection de branche + publication d'image Docker + déploiement automatisé), et corriger un bug d'arrêt propre du serveur découvert en production.
+
+### Travail réalisé
+
+- Protection de la branche `main` sur GitHub : le merge d'une PR est désormais bloqué tant que le check "Tests" du workflow `tests.yml` n'est pas au vert.
+- Extension de `tests.yml` pour publier automatiquement l'image Docker de l'API sur GitHub Container Registry (GHCR) après succès des tests sur `main` : `docker/login-action`, `docker/build-push-action`, tags `latest` et `${{ github.sha }}`.
+- Ajout d'un appel au Deploy Hook Render (`curl -X POST` sur le secret `RENDER_DEPLOY_HOOK`) en fin de workflow, pour déclencher automatiquement le redéploiement de la dernière image publiée — Render ne surveille pas les registres, un déclenchement explicite est nécessaire.
+- Ajout du bloc `permissions: contents: read / packages: write` au niveau du job, requis pour autoriser le `GITHUB_TOKEN` par défaut à pousser vers GHCR.
+- Package GHCR `ghcr.io/fsenycouty/pokedex` créé et rendu public.
+- Bascule du service Render `pokedex-api` du mode "Build depuis le dépôt Git" vers le mode "Existing Image", pointant sur `ghcr.io/fsenycouty/pokedex:latest` (Settings → Image → Source → Edit) — le service déploie désormais l'image déjà construite et testée en CI, plutôt que de rebuilder depuis le `Dockerfile` à chaque déploiement.
+- Découverte, via les logs Render, que l'arrêt propre du serveur (`gracefulShutdown` sur `SIGTERM`) ne s'exécutait jamais en production : le `Dockerfile` utilisait `CMD ["npm", "start"]`, faisant de `npm` (et non `node`) le PID 1 du conteneur — `npm` ne retransmettant pas fiablement `SIGTERM` à son processus enfant, `server.js` ne recevait jamais le signal.
+- Correction du `Dockerfile` : `CMD ["node", "src/server.js"]`, pour que `node` soit directement PID 1 et reçoive les signaux de Render.
+- Vérification de bout en bout : redémarrage manuel du service sur Render après déploiement de l'image corrigée, confirmation dans les logs de la ligne applicative `"SIGTERM reçu, arrêt propre du serveur..."` (absente sur les instances précédentes, qui affichaient à la place une erreur `npm error signal SIGTERM`).
+
+### Difficultés rencontrées / corrigées
+
+- **`denied: installation not allowed to Create organization package`** lors du premier push vers GHCR : `GITHUB_TOKEN` par défaut sans droit d'écriture sur les packages. Corrigé par l'ajout explicite de `permissions: packages: write` dans `tests.yml`.
+- **Arrêt du serveur jamais propre en production** (`npm error signal SIGTERM` au lieu des logs applicatifs de `gracefulShutdown`) : cause identifiée comme un problème de PID 1 lié à `CMD ["npm", "start"]` dans le `Dockerfile`. Corrigé en lançant `node` directement.
+- Sur Render, les déploiements en mode "Existing Image" n'affichent plus le message de commit associé (seulement le hash court de l'image et son tag) : normal, Render n'a plus accès au dépôt Git dans ce mode, seulement au registre GHCR — le lien avec le commit se retrouve via l'historique GitHub Actions.
+
+### À poursuivre
+
+- Rappel à moi-même : ne pas repousser directement sur `main` pour une évolution non triviale (fait une fois pour le GHCR/CD, par manque d'anticipation) — repris dès le correctif suivant avec une branche dédiée et une PR.
+- Mettre en place l'automatisation de la création de `pokedex_test` via un script dans `docker-entrypoint-initdb.d/`.
+- Vérifier la configuration CORS de `app.js` en vue d'une éventuelle consommation de l'API par un frontend séparé.
+
+---
+
 ## 2026-09-11
 
 ### Objectifs du jour
+
 Déployer l'API Pokédex en production avec Docker.
 
 ### Travail réalisé
+
 - Déploiement sur Render (Web Service, plan Free) à partir du `Dockerfile` existant dans `api/`, avec `Root Directory: api`.
 - Choix d'une base PostgreSQL managée séparée sur Neon (plutôt que Postgres Render) pour éviter l'expiration automatique après 30 jours du plan gratuit Render.
 - Ajout de `dialectOptions.ssl` dans `sequelize.client.js`, conditionné à `NODE_ENV=production` : Neon impose une connexion chiffrée, contrairement à la base Docker locale.
@@ -16,25 +50,29 @@ Déployer l'API Pokédex en production avec Docker.
 - Création manuelle de la base `pokedex_test` dans le conteneur Docker local (`psql -c "CREATE DATABASE pokedex_test;"`) — seule `pokedex` (`POSTGRES_DB`) est créée automatiquement au démarrage du conteneur.
 
 ### Difficultés rencontrées / corrigées
+
 - **`npm test` → `ECONNREFUSED 127.0.0.1:5432`** : port du service `db` non publié vers l'hôte dans `docker-compose.yml`. Corrigé par l'ajout de `ports: ["5432:5432"]`.
 - **`npm test` → `database "pokedex_test" does not exist`** : base de test jamais créée dans le conteneur Docker. Corrigés en créant `pokedex_test` manuellement.
 
 ### À poursuivre
+
 - Mettre en place l'automatisation de la création de `pokedex_test` via un script dans `docker-entrypoint-initdb.d/`, pour éviter de la recréer manuellement à chaque réinitialisation du volume.
-- GitHub Actions CI avec PostgreSQL service container.
+- Mettre en place un pipeline CI/CD complet.
 - Vérifier la configuration CORS de `app.js` en vue d'une éventuelle consommation de l'API par un frontend séparé.
 
 ---
 
 ## 2026-08-28
- 
+
 ### Objectifs du jour
+
 - Factorisation : messages d'erreur centralisés
 - Revue d'architecture et de qualité de code sur l'ensemble du projet avec Claude Code, avant mise en ligne effective du repo GitHub
 - Corriger les incohérences trouvées et rajouter des tests
 - Mettre en place l'outillage qualité (ESLint/Prettier), le CI (GitHub Actions), et Docker pour faciliter l'installation
 
 ### Travail réalisé
+
 - Nettoyage : tokens JWT réels retirés des fichiers `.http` (`rest-client/`), remplacés par du chaînage de requêtes REST Client (`# @name login` + `{{login.response.body.token}}`)
 - `package.json` : `description`/`author`/`keywords` renseignés, `nodemon` déplacé en `devDependencies`, `engines` ajouté (`node >=20`, contrainte réelle de `joi`/`swagger-jsdoc`)
 - Messages d'erreur dupliqués (5 occurrences de "L'équipe n'existe pas !" entre `TeamController` et `TeamPokemonController`, etc.) centralisés dans `utils/messages.js`
@@ -45,23 +83,27 @@ Déployer l'API Pokédex en production avec Docker.
 - README : section "Avec Docker (recommandé)" ajoutée en parallèle de l'installation native, tableau des scripts complété (`lint`, `format`)
 
 ### Difficultés rencontrées / corrigées
+
 - En ajoutant les nouveaux fichiers de test d'intégration, la suite est devenue instable (`SequelizeUniqueConstraintError`, `relation "user" does not exist`) : plusieurs fichiers de test exécutaient chacun leur propre `sequelize.sync({force:true})` **en parallèle** sur la même BDD `pokedex_test`, et se marchaient dessus. Invisible avant car un seul fichier touchait la BDD jusqu'ici. Corrigé en forçant l'exécution séquentielle des fichiers (`--test-concurrency=1` dans le script `test`)
 - ESLint : faux positif `no-unused-vars` sur `next` dans le middleware de gestion d'erreur — Express exige exactement 4 paramètres pour reconnaître un middleware de gestion d'erreur, même si `next` n'est jamais appelé dedans. Corrigé en le préfixant `_next` (+ `argsIgnorePattern: "^_"` dans la config) plutôt qu'en le supprimant, ce qui aurait cassé la gestion d'erreur silencieusement
 - Docker : `argon2` (module natif) refuse de s'installer sur `node:20-alpine` (pas de binaire précompilé pour musl) ; passage à `node:20-slim` insuffisant seul (`node-gyp` réclame Python). Corrigé en ajoutant `python3 make g++` dans le `Dockerfile`
 
 ### À poursuivre
+
 - Fonctionnalités (recherche, favoris, score d'équipe)
 
 ---
 
 ## 2026-08-27
- 
+
 ### Objectifs du jour
+
 - Finaliser la BDD de test et écrire les tests automatisés demandés par la roadmap (limite de 6, unicité, connexion, inscription)
 - Réorganiser le projet en dossier `src/`
 - Mettre en place la documentation Swagger de l'API
 
 ### Travail réalisé
+
 - Finalisation de la BDD de test : `.env.test`, script de préchargement `env.setup.js` (chargé via `--import`), script `npm test` corrigé
 - Réorganisation complète en dossier `src/` (`config`, `controllers`, `routers`, `services`, `middlewares`, `schemas`, `utils`, `migrations`, `models`, `tests`), en gardant `.env`, `package.json`, `data/` à la racine d'`api/`
 - Tests unitaires sur `checkTeamPokemon` (3 tests : cas autorisé, limite de 6 atteinte, Pokémon déjà présent)
@@ -73,23 +115,27 @@ Déployer l'API Pokédex en production avec Docker.
 - Toutes les routes documentées avec `@openapi` : `pokemon.router.js`, `team.router.js`, `team.pokemon.router.js`, `auth.router.js` — tags, `security` (bearerAuth) sur les routes protégées, `requestBody`, codes de réponse détaillés (y compris exemples multiples pour un même code, ex. 409 sur l'inscription)
 
 ### Difficultés rencontrées / corrigées
+
 - Plusieurs bugs de syntaxe dans les premiers jets des tests d'intégration : parenthèse en trop autour de `fetch(...)`, `{...}` littéral non remplacé, `response` (objet Response) comparé directement au lieu du `body` JSON extrait, assertion avec un `id` deviné en dur (fragile) — tous corrigés
 - Mélange accidentel de la syntaxe Chai (`expect(...).to.equal(...)`) dans un fichier qui utilise `assert` natif de `node:test` — corrigé
 - Documentation Swagger : deux erreurs d'indentation YAML
 
 ### À poursuivre
+
 - Factorisation : messages d'erreur centralisés
 
 ---
 
 ## 2026-08-26
- 
+
 ### Objectifs du jour
+
 - Mettre en place l'authentification complète (connexion, déconnexion), l'autorisation ("mes propres équipes") et la validation stricte (Joi)
 - Centraliser la gestion d'erreur
 - Démarrer les tests automatisés
 
 ### Travail réalisé
+
 - Gestion d'erreur centralisée : classe `HttpError` (statusCode validé via setter), `ErrorController` (`errorHandler` + `route404`), en tirant parti d'Express 5 (rejets de Promise async capturés nativement) — refactor complet des 4 controllers (Auth, Team, Pokemon, TeamPokemon) pour supprimer tous les `try/catch` au profit de `throw new HttpError(...)`
 - Validation Joi mise en place : middleware générique `validate(schema)`, schémas `registerSchema`, `loginSchema`, `teamSchema`, branchés sur les routes correspondantes
 - Middleware `validateToken` (JWT : extraction Bearer, vérification, recherche du user en BDD, injection `req.user`)
@@ -101,6 +147,7 @@ Déployer l'API Pokédex en production avec Docker.
 - Mise en place d'une BDD de test dédiée (`pokedex_test`, même utilisateur `admin_pokedex`) en préparation des tests automatisés
 
 ### Difficultés rencontrées / corrigées
+
 - `AuthController.registerUser` : le `catch` avalait les `HttpError` 409 volontaires pour les remplacer par une erreur générique — corrigé pour laisser remonter les `HttpError` telles quelles
 - `ErrorController.errorHandler` : fuite du message SQL brut (`err.parent.message`) au client — corrigé (message générique au client, détail loggué côté serveur avec contexte de la route)
 - Après suppression des `try/catch`, du code mort a été laissé dans `registerUser` (référence à une variable `error` qui n'existait plus) — corrigé
@@ -109,6 +156,7 @@ Déployer l'API Pokédex en production avec Docker.
 - tests unitaires sur `checkTeamPokemon` (limite de 6, unicité)
 
 ### À poursuivre
+
 - Finaliser la BDD de test (`DATABASE_URL_TEST`, bascule sur `NODE_ENV=test` dans `sequelize.client.js`, script `npm test`)
 - Écrire les tests : intégration sur `auth` (message d'erreur identique à la connexion, pas de mot de passe dans la réponse d'inscription)
 - Factorisation : messages d'erreur centralisés
@@ -119,11 +167,13 @@ Déployer l'API Pokédex en production avec Docker.
 ## 2026-08-25
 
 ### Objectifs du jour
+
 - Terminer la gestion des Pokémons d'une équipe avec les règles métier (limite de 6, unicité) en couche Service
 - Faire évoluer la conception : entité `USER` et association à `TEAM`
 - Démarrer l'authentification (inscription)
 
 ### Travail réalisé
+
 - Endpoints liste/détail `Pokemon` implémentés (`PokemonController.js`, `pokemon.router.js`)
 - Gestion des Pokémons d'une équipe (`TeamPokemonController.js` + `team.pokemon.router.js`) : ajout/retrait, avec vérification de l'existence de la Team et du Pokémon
 - Couche Service `services/team.pokemon.service.js` : `checkTeamPokemon(team, idPokemon)` vérifie la limite de 6 Pokémons et l'unicité, intégrée au Controller avec réponse `409 Conflict` et message dédié selon la raison du refus
@@ -135,10 +185,12 @@ Déployer l'API Pokédex en production avec Docker.
 - Inscription utilisateur (`AuthController.registerUser`, `POST /auth/register`) : hash du mot de passe, vérification d'unicité `username` et `email`, réponse sans `password_hash`
 
 ### Difficultés rencontrées / corrigées
+
 - `checkTeamPokemon` (première version) : bug off-by-one sur la limite de 6 et cas "déjà dans l'équipe" non géré — corrigés
 - Bug dans le seed : mauvaise lecture du champ JSON (`user.password_hash` au lieu de `user.password`) lors du hachage — corrigé
 
 ### À poursuivre
+
 - Connexion / déconnexion (login/logout)
 - Validation stricte des entrées avec Joi + middleware de validation générique
 - Ajouter les middlewares 404/500 globaux dans `app.js`
@@ -149,10 +201,12 @@ Déployer l'API Pokédex en production avec Docker.
 ## 2026-08-24
 
 ### Objectifs du jour
+
 - Poser la conception des données du projet : MCD → MLD → MPD
 - Démarrer le CRUD `team`
 
 ### Travail réalisé
+
 - MCD (Mocodo) : entités `POKEMON`, `TEAM`, `TYPE`, associations `IS_COMPOSED_OF` (0,N–0,N) et `BELONGS_TO` (1,N–0,N)
 - MLD : traduction des associations N-N en tables de jonction
 - MPD : script final avec clé primaire technique `id` sur chaque table, en conservant la structure du script SQL fourni dans l'exercice, FK avec `ON DELETE CASCADE`
@@ -165,10 +219,12 @@ Déployer l'API Pokédex en production avec Docker.
 - Fichier de requêtes REST Client (`.http`) créé pour tester manuellement les 5 endpoints `Team` (GET liste, GET détails, POST, PUT, DELETE)
 
 ### Difficultés rencontrées / corrigées
+
 - Bug dans `TeamController.delete` : `return` manquant avant la réponse 404, provoquait une double réponse HTTP (`ERR_HTTP_HEADERS_SENT`) sur un ID inexistant — corrigé
 - Bug dans `TeamController.getById` : le bloc `catch` ne renvoyait aucune réponse au client en cas d'erreur (requête restait en attente) — corrigé
 
 ### À poursuivre
+
 - Pas de contrainte d'unicité en base sur les tables de jonction (`pokemon_type`, `team_pokemon`) : la règle « un Pokémon unique par équipe » reste entièrement portée par la couche Service à venir
 - Introduire une couche Service avant les endpoints "ajouter/retirer un Pokémon d'une équipe" (la roadmap impose explicitement que la limite de 6 Pokémons soit vérifiée en Service, pas seulement au Controller)
 - Ajouter les middlewares 404/500 globaux dans `app.js`
